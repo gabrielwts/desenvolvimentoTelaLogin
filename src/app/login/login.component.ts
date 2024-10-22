@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext'
@@ -14,16 +15,16 @@ import { ToastModule } from 'primeng/toast';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class ComponentesComponent {
+export class LoginComponent {
   login: string="";
   senha: string='';
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private router: Router) {}
 
 
 
   enviar() {
     if (this.login == 'admin' && this.senha == "batatinha"){
-      
+      this.router.navigate(["/home"])
     } else {
       this.messageService.add({ severity: 'error', summary: 'Erro 404', detail: 'Login e/ou Senha inválidos' + this.login});
     }
