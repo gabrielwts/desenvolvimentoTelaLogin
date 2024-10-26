@@ -25,8 +25,13 @@ export class LoginComponent {
 
   enviar() {
     if (this.login == 'admin' && this.senha == "batatinha"){
+      // Redirecionar para a tela da home
       this.router.navigate(["/home"])
-    } else {
+    } else if (this.login == "gamer" && this.senha == "batatinha") {
+      this.router.navigate(['grid'])
+    }
+    else {
+      // Apresentar mensagem que o login/senha estão inválidos
       this.messageService.add({ severity: 'error', summary: 'Erro 404', detail: 'Login e/ou Senha inválidos' + this.login});
     }
   }
